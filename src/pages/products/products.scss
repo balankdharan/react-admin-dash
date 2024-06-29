@@ -1,2 +1,31 @@
 .products {
+  padding: 20px;
+  box-sizing: border-box;
+
+  .info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+
+    button {
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  }
+
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+
+    .MuiDataGrid-root {
+      width: 100%;
+      min-width: 600px; // Adjust based on your requirement
+      box-sizing: border-box;
+    }
+
+    .MuiDataGrid-cell {
+      white-space: nowrap;
+    }
+  }
 }
