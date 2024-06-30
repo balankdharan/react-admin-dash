@@ -4,6 +4,7 @@ import "./users.scss";
 import { userRows } from "../../data";
 import { useState } from "react";
 import Add from "../../components/add/Add";
+// import { useQuery } from "@tanstack/react-query";
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 90 },
   {
@@ -53,6 +54,12 @@ const columns: GridColDef[] = [
 ];
 const Users = () => {
   const [open, setOpen] = useState(false);
+  // const {  isLoading, data } = useQuery({
+  //   queryKey: ['todos'],
+  //   queryFn: ()=>{
+  //     //fetch API
+  //   },
+  // })
   return (
     <div className="users">
       <div className="info">
