@@ -49,6 +49,7 @@ function App() {
           path: "/products",
           element: <Products />,
         },
+
         {
           path: "/users/:id",
           element: <User />,

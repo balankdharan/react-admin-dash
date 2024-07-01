@@ -11,14 +11,25 @@ a {
   color: inherit;
 }
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .main {
   font-family: "Inter", sans-serif;
   background-color: $main-bg;
   color: $main-color;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the main div takes at least the full height of the viewport */
 }
 
 .container {
   display: flex;
+  flex: 1; /* Ensures the container takes up remaining space between navbar and footer */
 }
 
 .menuContainer {
@@ -30,4 +41,11 @@ a {
 .contactContainer {
   padding: 5px 20px;
   width: 100%;
+  overflow: auto; /* Ensures that content inside the contact container can scroll if necessary */
+}
+
+footer {
+  border-top: 1px solid $soft-bg;
+  padding: 10px 20px;
+  text-align: center;
 }
