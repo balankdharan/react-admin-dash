@@ -10,6 +10,8 @@ import "./styles/global.scss";
 import User from "./pages/user/User";
 import Product from "./pages/product/Product";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import FormPage from "./components/form/FormPage";
+import KanbanBoard from "./components/kanban/KanbanBoard";
 
 function App() {
   const Layout = () => {
@@ -48,6 +50,14 @@ function App() {
         {
           path: "/products",
           element: <Products />,
+        },
+        {
+          path: "/form",
+          element: <FormPage />,
+        },
+        {
+          path: "/kanban",
+          element: <KanbanBoard />,
         },
 
         {

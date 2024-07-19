@@ -59,14 +59,14 @@ export const menu = [
       },
       {
         id: 2,
-        title: "Notes",
-        url: "/",
+        title: "Kanban",
+        url: "/kanban",
         icon: "note.svg",
       },
       {
         id: 3,
         title: "Forms",
-        url: "/",
+        url: "/form",
         icon: "form.svg",
       },
       {
