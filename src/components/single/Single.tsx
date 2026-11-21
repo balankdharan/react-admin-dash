@@ -30,13 +30,12 @@ const Single = (props: Props) => {
             {props.img && <img src={props.img} alt="" />}
 
             <h1>{props.title}</h1>
-            <button> Update</button>
           </div>
           <div className="details">
             {Object.entries(props.info).map((item) => (
               <div className="item" key={item[0]}>
                 <span className="itemTitle">{item[0]}</span>
-                <span className="itemValue">{item[1]}</span>
+                <span className="itemValue">{String(item[1])}</span>
               </div>
             ))}
           </div>
@@ -61,6 +60,7 @@ const Single = (props: Props) => {
                   <Legend />
                   {props.chart.dataKeys.map((dataKey) => (
                     <Line
+                      key={dataKey.name}
                       type="monotone"
                       dataKey={dataKey.name}
                       stroke={dataKey.color}
@@ -76,8 +76,8 @@ const Single = (props: Props) => {
         <h2>Latest Activity</h2>
         {props.activities && (
           <ul>
-            {props.activities.map((activity) => (
-              <li key={activity.text}>
+            {props.activities.map((activity, index) => (
+              <li key={index}>
                 <div>
                   <p>{activity.text}</p>
                   <time> {activity.time}</time>

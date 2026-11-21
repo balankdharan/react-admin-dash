@@ -1,10 +1,9 @@
 import { GridColDef } from "@mui/x-data-grid";
 import DataTable from "../../components/dataTable/DataTable";
 import "./users.scss";
-import { userRows } from "../../data";
 import { useState } from "react";
 import Add from "../../components/add/Add";
-// import { useQuery } from "@tanstack/react-query";
+import { today, useAdminStore } from "../../store/AdminStore";
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 90 },
   {
@@ -54,12 +53,7 @@ const columns: GridColDef[] = [
 ];
 const Users = () => {
   const [open, setOpen] = useState(false);
-  // const {  isLoading, data } = useQuery({
-  //   queryKey: ['todos'],
-  //   queryFn: ()=>{
-  //     //fetch API
-  //   },
-  // })
+  const { data, addRow, deleteRow } = useAdminStore();
   return (
     <div className="users">
       <div className="info">
@@ -67,8 +61,26 @@ const Users = () => {
         <button onClick={() => setOpen(true)}>Add new User</button>
       </div>
       <div>
-        <DataTable slug="users" columns={columns} rows={userRows} />
-        {open && <Add slug="user" columns={columns} setOpen={setOpen} />}
+        <DataTable
+          slug="users"
+          columns={columns}
+          rows={data.users}
+          onDelete={(id) => deleteRow("users", id)}
+        />
+        {open && (
+          <Add
+            slug="user"
+            columns={columns}
+            setOpen={setOpen}
+            onAdd={(values) =>
+              addRow(
+                "users",
+                { ...values, createdAt: today() },
+                `${values.firstName} ${values.lastName}`
+              )
+            }
+          />
+        )}
       </div>
     </div>
   );

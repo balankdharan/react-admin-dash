@@ -3,7 +3,7 @@ import "./products.scss";
 import DataTable from "../../components/dataTable/DataTable";
 import Add from "../../components/add/Add";
 import { GridColDef } from "@mui/x-data-grid";
-import { products } from "../../data";
+import { today, useAdminStore } from "../../store/AdminStore";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 70 },
@@ -50,11 +50,13 @@ const columns: GridColDef[] = [
     field: "inStock",
     headerName: "In Stock",
     width: 100,
+    type: "boolean",
   },
 ];
 
 const Products = () => {
   const [open, setOpen] = useState(false);
+  const { data, addRow, deleteRow } = useAdminStore();
 
   return (
     <div className="products">
@@ -63,8 +65,26 @@ const Products = () => {
         <button onClick={() => setOpen(true)}>Add new Product</button>
       </div>
       <div className="table-container">
-        <DataTable slug="products" columns={columns} rows={products} />
-        {open && <Add slug="product" columns={columns} setOpen={setOpen} />}
+        <DataTable
+          slug="products"
+          columns={columns}
+          rows={data.products}
+          onDelete={(id) => deleteRow("products", id)}
+        />
+        {open && (
+          <Add
+            slug="product"
+            columns={columns}
+            setOpen={setOpen}
+            onAdd={(values) =>
+              addRow(
+                "products",
+                { ...values, createdAt: today() },
+                String(values.title)
+              )
+            }
+          />
+        )}
       </div>
     </div>
   );

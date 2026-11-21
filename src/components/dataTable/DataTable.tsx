@@ -6,26 +6,33 @@ type Props = {
   columns: GridColDef[];
   rows: object[];
   slug: string;
+  onDelete: (id: number) => void;
+  // Orders have no detail page, so they only get the delete action.
+  viewable?: boolean;
 };
 
-const DataTable = (props: Props) => {
-  const handleDelete = (id: number) => {
-    //delete the item
-    console.log(`deleting ${id}`);
-  };
-
+const DataTable = ({ columns, rows, slug, onDelete, viewable = true }: Props) => {
   const actionColumn: GridColDef = {
     field: "action",
     headerName: "Action",
-    width: 200,
+    width: 120,
+    sortable: false,
     renderCell: (params) => {
       return (
         <div className="action">
-          <Link to={`/${props.slug}/${params.row.id}`}>
-            <img src="/view.svg" alt="" />
-          </Link>
-          <div className="delete" onClick={() => handleDelete(params.row.id)}>
-            <img src="/delete.svg" alt="" />
+          {viewable && (
+            <Link to={`/${slug}/${params.row.id}`} title="View">
+              <img src="/view.svg" alt="View" />
+            </Link>
+          )}
+          <div
+            className="delete"
+            title="Delete"
+            onClick={() => {
+              if (window.confirm(`Delete #${params.row.id}?`)) onDelete(params.row.id);
+            }}
+          >
+            <img src="/delete.svg" alt="Delete" />
           </div>
         </div>
       );
@@ -36,8 +43,8 @@ const DataTable = (props: Props) => {
     <div className="dataTable">
       <DataGrid
         className="dataGrid"
-        rows={props.rows}
-        columns={[...props.columns, actionColumn]}
+        rows={rows}
+        columns={[...columns, actionColumn]}
         initialState={{
           pagination: {
             paginationModel: {
@@ -52,7 +59,7 @@ const DataTable = (props: Props) => {
             quickFilterProps: { debounceMs: 500 },
           },
         }}
-        pageSizeOptions={[5]}
+        pageSizeOptions={[5, 10, 25]}
         checkboxSelection
         disableRowSelectionOnClick
         disableColumnFilter

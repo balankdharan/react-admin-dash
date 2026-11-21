@@ -1,0 +1,66 @@
+.charts {
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      strong {
+        font-size: 28px;
+      }
+    }
+  }
+
+  .bar {
+    display: grid;
+    grid-template-columns: 100px 1fr 30px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+
+    .track {
+      height: 12px;
+      background-color: #2a3447;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      border-radius: 6px;
+      background-color: #8884d8;
+
+      &.delivered {
+        background-color: #82ca9d;
+      }
+      &.shipped {
+        background-color: #8bc6f5;
+      }
+      &.processing {
+        background-color: #f5d36b;
+      }
+      &.cancelled {
+        background-color: #f08a94;
+      }
+    }
+  }
+
+  .big {
+    height: 450px;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+
+    .panel {
+      height: 380px;
+    }
+  }
+}

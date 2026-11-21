@@ -3,114 +3,43 @@ export const menu = [
     id: 1,
     title: "main",
     listItems: [
-      {
-        id: 1,
-        title: "Homepage",
-        url: "/",
-        icon: "home.svg",
-      },
-      {
-        id: 2,
-        title: "Profile",
-        url: "/users/1",
-        icon: "user.svg",
-      },
+      { id: 1, title: "Homepage", url: "/", icon: "home.svg" },
+      { id: 2, title: "Profile", url: "/users/1", icon: "user.svg" },
     ],
   },
   {
     id: 2,
     title: "lists",
     listItems: [
-      {
-        id: 1,
-        title: "Users",
-        url: "/users",
-        icon: "user.svg",
-      },
-      {
-        id: 2,
-        title: "Products",
-        url: "/products",
-        icon: "product.svg",
-      },
-      {
-        id: 3,
-        title: "Orders",
-        url: "/orders",
-        icon: "order.svg",
-      },
-      {
-        id: 4,
-        title: "Posts",
-        url: "/posts",
-        icon: "post2.svg",
-      },
+      { id: 1, title: "Users", url: "/users", icon: "user.svg" },
+      { id: 2, title: "Products", url: "/products", icon: "product.svg" },
+      { id: 3, title: "Orders", url: "/orders", icon: "order.svg" },
+      { id: 4, title: "Posts", url: "/posts", icon: "post2.svg" },
     ],
   },
   {
     id: 3,
     title: "general",
     listItems: [
-      {
-        id: 1,
-        title: "Elements",
-        url: "/",
-        icon: "element.svg",
-      },
-      {
-        id: 2,
-        title: "Kanban",
-        url: "/kanban",
-        icon: "note.svg",
-      },
-      {
-        id: 3,
-        title: "Forms",
-        url: "/form",
-        icon: "form.svg",
-      },
-      {
-        id: 4,
-        title: "Calendar",
-        url: "/",
-        icon: "calendar.svg",
-      },
+      { id: 1, title: "Kanban", url: "/kanban", icon: "note.svg" },
+      { id: 2, title: "Forms", url: "/form", icon: "form.svg" },
+      { id: 3, title: "Calendar", url: "/calendar", icon: "calendar.svg" },
     ],
   },
   {
     id: 4,
     title: "Maintenance",
     listItems: [
-      {
-        id: 1,
-        title: "Settings",
-        url: "/",
-        icon: "setting.svg",
-      },
-      {
-        id: 2,
-        title: "Backups",
-        url: "/",
-        icon: "backup.svg",
-      },
+      { id: 1, title: "Settings", url: "/settings", icon: "setting.svg" },
+      { id: 2, title: "Backups", url: "/backups", icon: "backup.svg" },
     ],
   },
   {
     id: 5,
     title: "analytics",
     listItems: [
-      {
-        id: 1,
-        title: "Charts",
-        url: "/",
-        icon: "chart.svg",
-      },
-      {
-        id: 2,
-        title: "Logs",
-        url: "/",
-        icon: "log.svg",
-      },
+      { id: 1, title: "Charts", url: "/charts", icon: "chart.svg" },
+      { id: 2, title: "Logs", url: "/logs", icon: "log.svg" },
     ],
   },
 ];
@@ -717,3 +646,53 @@ export const singleProduct = {
     },
   ],
 };
+
+export const orderRows = [
+  { id: 1, customer: "Eula Hubbard", product: "Playstation 5 Digital Edition", amount: "$250.99", status: "Delivered", createdAt: "03.02.2023" },
+  { id: 2, customer: "Stella Manning", product: "Dell Laptop KR211822", amount: "$499.99", status: "Shipped", createdAt: "05.02.2023" },
+  { id: 3, customer: "Mary Greer", product: "Apple Watch Series 8", amount: "$329.00", status: "Processing", createdAt: "07.02.2023" },
+  { id: 4, customer: "Mildred Ross", product: "Sony Bravia 55 TV", amount: "$899.00", status: "Delivered", createdAt: "09.02.2023" },
+  { id: 5, customer: "Fred Hughes", product: "JBL Flip 6", amount: "$129.99", status: "Cancelled", createdAt: "10.02.2023" },
+  { id: 6, customer: "Lela Rios", product: "Canon EOS R10", amount: "$979.00", status: "Shipped", createdAt: "12.02.2023" },
+  { id: 7, customer: "Elva McDonald", product: "Logitech MX Master 3S", amount: "$99.99", status: "Processing", createdAt: "14.02.2023" },
+];
+
+export const postSeed = [
+  {
+    id: 1,
+    author: "Elva McDonald",
+    role: "Product designer",
+    avatar: "https://images.pexels.com/photos/8405873/pexels-photo-8405873.jpeg?auto=compress&cs=tinysrgb&w=200",
+    text: "The new dashboard layout is live. Charts load faster and the tables now have a quick search. Let me know what you think!",
+    likes: 15,
+    liked: false,
+    comments: [{ id: 1, author: "Brent Reeves", text: "Looks great, the search is really handy." }],
+    createdAt: "2 hours ago",
+  },
+  {
+    id: 2,
+    author: "Linnie Nelson",
+    role: "Sales",
+    avatar: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=200",
+    text: "We crossed 11,000 users this month. Thanks to everyone who helped with the launch campaign.",
+    likes: 42,
+    liked: false,
+    comments: [],
+    createdAt: "Yesterday",
+  },
+];
+
+export const kanbanSeed = [
+  { id: 1, title: "Design login page", description: "Simple form with email and password", column: "done" },
+  { id: 2, title: "Orders table", description: "List orders with status and amount", column: "done" },
+  { id: 3, title: "Calendar view", description: "Month view with events", column: "doing" },
+  { id: 4, title: "Export backups", description: "Download all data as JSON", column: "doing" },
+  { id: 5, title: "Email reports", description: "Weekly summary for admins", column: "todo" },
+  { id: 6, title: "Dark / light theme", description: "Let users pick a theme", column: "todo" },
+];
+
+export const eventSeed = [
+  { id: 1, date: "today", title: "Team stand-up" },
+  { id: 2, date: "today+2", title: "Release v1.2" },
+  { id: 3, date: "today+5", title: "Quarterly review" },
+];
